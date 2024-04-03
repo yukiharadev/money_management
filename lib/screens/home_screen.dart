@@ -4,7 +4,6 @@ import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:money_lover/widgets/recent_transactions.dart';
-
 import '../models/transactions.dart';
 import '../widgets/add_transaction_widget.dart';
 import '../widgets/my_wallet_widget.dart';
@@ -20,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   double balance = 0.0;
-  List<Transaction> transactions = [];
+  List<Transaction> transactions = [ ];
 
   @override
   void initState() {
@@ -36,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       if (response.statusCode == 200) {
         final List<dynamic> jsonData = jsonDecode(response.body);
+        print('Fetched JSON data: $jsonData');
         setState(() {
           transactions = jsonData.map((item) => Transaction.fromJson(item)).toList();
           calculateBalance(transactions);
@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.black,
       body: HomeScreenContent(
         selectedCurrency: widget.selectedCurrency,
-        balance: balance,
+        balance: balance, transactions: transactions,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -118,11 +118,12 @@ class _HomeScreenState extends State<HomeScreen> {
 class HomeScreenContent extends StatelessWidget {
   final Currency selectedCurrency;
   final double balance;
+  final List<Transaction> transactions;
 
   const HomeScreenContent({
     Key? key,
     required this.selectedCurrency,
-    required this.balance,
+    required this.balance, required this.transactions,
   }) : super(key: key);
 
   @override
@@ -174,7 +175,7 @@ class HomeScreenContent extends StatelessWidget {
           children: <Widget>[
             MyWallet(selectedCurrency: selectedCurrency, balance: balance),
             SizedBox(height: 20,),
-            RecenTrasactionWidget(transactions: [],)
+            RecenTrasactionWidget(transactions: transactions,)
           ],
         ),
       ),
