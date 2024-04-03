@@ -168,15 +168,17 @@ class HomeScreenContent extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
-        margin: const EdgeInsets.only(top: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            MyWallet(selectedCurrency: selectedCurrency, balance: balance),
-            SizedBox(height: 20,),
-            RecenTrasactionWidget(transactions: transactions,)
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(top: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              MyWallet(selectedCurrency: selectedCurrency, balance: balance),
+              SizedBox(height: 20,),
+              RecenTrasactionWidget(transactions: transactions,)
+            ],
+          ),
         ),
       ),
     );
