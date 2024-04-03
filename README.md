@@ -1,16 +1,6 @@
-# money_lover
+## Bài kiểm tra 2:
 
-A new Flutter project.
 
-## Getting Started
+<div align = "center"> Lười nên không clone full app.  </div>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<div align = "center"> Ứng dụng 1 người nên ko phân account, ai cũng có data của api là thu chi bao nhiêu @@  </div>
